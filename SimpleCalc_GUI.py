@@ -46,11 +46,14 @@ class Calc_GUI(QMainWindow):
         # Button for /
         btndiv = QPushButton("/", self)
         btndiv.move(150, 150)
+        btndiv = QPushButton("%",self) 
+        btnmod.mov(1,2)
         # button handler
         btnplus.clicked.connect(self.add)
         btnminus.clicked.connect(self.minus)
         btnmul.clicked.connect(self.mul)
         btndiv.clicked.connect(self.div)
+        btnmod.clicked.connect(self.mod)
         #statusBar
         self.statusBar().showMessage('Written by Udin')
         self.setGeometry(500, 500, 270, 270)
@@ -103,6 +106,16 @@ class Calc_GUI(QMainWindow):
                 self.res.setText(str(self.makeAsItIs(tot)))
         except ValueError:
             self.res.setText('Invalid Input')
+            def mod(self):
+                sender=self.sender()
+                try:
+                    val1=float(self.input1.text())
+                    val2=float(self.input2.text())
+                    if(val2==0):
+                        self.res.setText('divide by 0')
+                        else:
+                            tot=val1/val2
+
     #func make the result as it is
     def makeAsItIs(self, value):
         if (value == int(value)):
